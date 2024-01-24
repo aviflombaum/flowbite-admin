@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "FlowbiteAdmin" %></title>
+    <title><%= content_for(:title) || "ErrorboxApp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -18,9 +18,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body class="bg-gray-50 dark:bg-gray-800">
+    <%= render "layouts/navigation" %>
+
+    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+      <%= render "layouts/sidebar" %>
+
+      <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+        <main>
+          <%= yield %>
+        </main>
+        <%= render "layouts/footer" %>
+      </div>
+    </div>
   </body>
 </html>
